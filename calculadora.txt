@@ -1,0 +1,44 @@
+#!/bin/bash
+
+while true; do
+    read -p "Digite o primeiro número: " num1
+    read -p "Digite o segundo número: " num2
+
+    echo "Selecione a operação:"
+    echo "1. Soma"
+    echo "2. Subtração"
+    echo "3. Multiplicação"
+    echo "4. Divisão"
+    echo "5. Sair"
+    read opcao
+
+    case $opcao in
+        1)
+            resultado=$(($num1 + $num2))
+            echo "Resultado da soma: $resultado"
+            ;;
+        2)
+            resultado=$(($num1 - $num2))
+            echo "Resultado da subtração: $resultado"
+            ;;
+        3)
+            resultado=$(($num1 * $num2))
+            echo "Resultado da multiplicação: $resultado"
+            ;;
+        4)
+            if [ $num2 -eq 0 ]; then
+                echo "Divisão por zero não é permitida."
+            else
+                resultado=$(($num1 / $num2))
+                echo "Resultado da divisão: $resultado"
+            fi
+            ;;
+        5)
+            echo "Saindo da calculadora..."
+            break
+            ;;
+        *)
+            echo "Opção inválida. Tente novamente."
+            ;;
+    esac
+done
